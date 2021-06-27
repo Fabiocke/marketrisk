@@ -1,0 +1,45 @@
+Metadata-Version: 1.0
+Name: marketrisk
+Version: 0.0.3
+Summary: Classes para calculos de risco de mercado
+Home-page: UNKNOWN
+Author: Fábio Minutti Teixeira
+Author-email: fabiomt92@hotmail.com
+License: MIT License
+Description: #Exemplo de calculo do Value at Risk paramÃ©trico de um portfolio de uma carteira composta por:
+        
+        #Ativos: PETR4, VALE3 e B3SA3
+        
+        #Tempo: de 01/01/2020 atÃ© 01/01/2021
+        
+        #Para buscar os preÃ§os e gerar os retornos:
+        
+        
+        import marketrisk as mr
+        
+        portfolio = mr.Stocks(['PETR4', 'MOVI3', 'IBOV'], start='2020-01-01', end='2021-02-20')
+        
+        retornos = portfolio.get_returns()
+        
+        
+        #Para calcular o risco:
+        
+        #O modulo risco recebe os retornos e pode receber os respectivos volumes
+        
+        risco = mr.Risk(retornos, [1000, 1500, 800])
+        
+        
+        #Calculo do var paramÃ©trico para 1 dia e 99% de confianÃ§a:
+        
+        var = risco.var(0.99, days=1)
+        
+        
+        #Calculo do var paramÃ©trico EWMA para 1 dia e 99% de confianÃ§a:
+        
+        var_ewma = risco.var(0.99, days=1, ewma=1)
+        
+        
+        
+        
+Keywords: risco,mercado,var,value at risk,market,risk
+Platform: UNKNOWN
